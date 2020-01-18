@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 12:43:54 by cpieri            #+#    #+#              #
-#    Updated: 2020/01/18 14:32:45 by cpieri           ###   ########.fr        #
+#    Updated: 2020/01/18 20:06:37 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ NAME		=	ft_retro
 PATH_SRCS	=	srcs
 
 PATH_OBJS	=	objs
-
 PATH_INCS	=	includes
 
 # ***************************************** #

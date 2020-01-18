@@ -17,8 +17,6 @@ int main(int argc, const char *argv[])
 	win.setCursor(20, 20);
 	win.updateEvent();
 	if (win.buttonsPressed(BUTTON_UP))
-		
-	// getch();
-	endwin();
+		endwin();
 	return 0;
 }
