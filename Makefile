@@ -24,8 +24,8 @@ RM := rm -rf
 SRCS_DIR=srcs/
 INCS_DIR=includes/
 
-SRC = $(addprefix $(SRCS_DIR), main.cpp)
-INC = $(addprefix $(INCS_DIR), ft_retro.hpp)
+SRC = $(addprefix $(SRCS_DIR), Decore.cpp Enemy.cpp GameEntity.cpp Person.cpp Player.cpp)
+INC = $(addprefix $(INCS_DIR), $(notdir $(SRC:.cpp=.hpp)))
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
