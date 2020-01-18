@@ -1,13 +1,13 @@
 #ifndef GAME_ENTITY_HPP
 # define GAME_ENTITY_HPP
 
-#include "ft_retro.hpp"
+# include <iostream>
+# include <ncurses.h>
 
-#define GAME_ENTITY_SIZE_X 1
-#define GAME_ENTITY_SIZE_Y 1
-#define GAME_ENTITY_LIMIT_MIN_Y 0
-#define GAME_ENTITY_LIMIT_MAX_Y 100
-
+# define GAME_ENTITY_SIZE_X 1
+# define GAME_ENTITY_SIZE_Y 1
+# define GAME_ENTITY_LIMIT_MIN_Y 0
+# define GAME_ENTITY_LIMIT_MAX_Y 100
 
 class GameEntity
 {

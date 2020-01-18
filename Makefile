@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 12:43:54 by cpieri            #+#    #+#              #
-#    Updated: 2020/01/18 20:06:37 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/18 21:17:59 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,12 +30,22 @@ PATH_INCS	=	includes
 # ***************************************** #
 
 NAME_SRCS	=	main.cpp			\
-				window/Window.cpp
+				window/Window.cpp	\
+				Player.cpp			\
+				Person.cpp			\
+				GameEntity.cpp		\
+				Enemy.cpp			\
+				Decore.cpp
 
 NAME_OBJS	=	$(NAME_SRCS:.cpp=.o)
 
-NAME_INCS	=	ft_retro.hpp	\
-				window/Window.hpp
+NAME_INCS	=	ft_retro.hpp		\
+				window/Window.hpp	\
+				Person.hpp			\
+				Player.hpp			\
+				GameEntity.hpp		\
+				Enemy.hpp			\
+				Decore.hpp
 
 NAME_DEPS	=	$(NAME_SRCS:.cpp=.d)
 
