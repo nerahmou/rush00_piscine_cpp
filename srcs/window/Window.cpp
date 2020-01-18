@@ -6,11 +6,12 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/18 21:48:49 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/18 22:01:31 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window/Window.hpp"
+#include <fstream>
 
 Windows::Windows(void) {
 	initscr();
@@ -61,8 +62,16 @@ void			Windows::printSquare(uint color) {
 
 void			Windows::printGameEntity(GameEntity const & toPrint) {
 	// uint	x0, x1, y0, y1 = 0;
+	uint	x, y = 0;
+	uint	x1, y1 = 0;
+	std::ofstream	ofs("printGameEntity.log");
 
-	this->setCursor(this->_width * 0.15, this->_height / 2);
+	x = this->_width * (toPrint.getPosX() / 100);
+	y = this->_height * (toPrint.getPosY() / 100);
+	y1 = this->_height / 2;
+	x1 = this->_width * 0.2;
+	ofs << "x: " << x << " x1: " << x1 << " y: " << y << " y1: " << y1  << std::endl;
+	this->setCursor(x, y);
 	this->printSquare(toPrint.getColor());
 }
 
