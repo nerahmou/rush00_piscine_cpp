@@ -3,43 +3,114 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
+#    Created: 2020/01/13 12:43:54 by cpieri            #+#    #+#              #
+#    Updated: 2020/01/18 14:32:45 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, clean, fclean, re
-.SUFFIXES:
+# ***************************************** #
+#			Ouput Name of Makefile			#
+# ***************************************** #
 
-NAME := ft_retro
-CC := clang++
-CFLAGS := -Wall -Wextra -Werror
-RM := rm -rf
+NAME		=	ft_retro
 
-#******************************************************************************#
-#                                    LIBFT                                     #
-#******************************************************************************#
+# ***************************************** #
+#	Path for Sources, Objects and Includes	#
+# ***************************************** #
 
-SRCS_DIR=srcs/
-INCS_DIR=includes/
+PATH_SRCS	=	srcs
 
-SRC = $(addprefix $(SRCS_DIR), main.cpp)
-INC = $(addprefix $(INCS_DIR), ft_retro.hpp)
-OBJ = $(SRC:.cpp=.o)
+PATH_OBJS	=	objs
 
-all: $(NAME)
+PATH_INCS	=	includes
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -lncurses $^ -o $@
+# ***************************************** #
+#	Names of Sources, Objects and Includes	#
+# ***************************************** #
 
-$(SRCS_DIR)%.o: $(SRCS_DIR)%.cpp  $(INC)
-	$(CC) $(CFLAGS) -I $(INCS_DIR) -c $< -o $@
+NAME_SRCS	=	main.cpp			\
+				window/Window.cpp
+
+NAME_OBJS	=	$(NAME_SRCS:.cpp=.o)
+
+NAME_INCS	=	ft_retro.hpp	\
+				window/Window.hpp
+
+NAME_DEPS	=	$(NAME_SRCS:.cpp=.d)
+
+SRCS		=	$(addprefix $(PATH_SRCS)/,$(NAME_SRCS))
+
+OBJS		=	$(addprefix $(PATH_OBJS)/,$(NAME_OBJS))
+
+INCS		=	$(addprefix $(PATH_INCS)/,$(NAME_INCS))
+
+DEPS		=	Makefile
+
+# ***************************************** #
+#			Flags for compile		 		#
+# ***************************************** #
+
+CC				=	clang++
+
+FLAGS_INCS		=	-I./$(PATH_INCS)
+
+FSANITIZE		=	-fsanitize=address -fno-omit-frame-pointer
+
+NCURSE			=	-lncurses
+
+override ERROR	+=	-g3
+
+override FLAGS	+=	-Wall -Wextra -Werror
+
+
+# ***************************************** #
+#					Color					#
+# ***************************************** #
+
+NONE	=	\033[0m
+RED		=	\033[31m
+GREEN	=	\033[32m
+YELLOW	=	\033[33m
+BLUE	=	\033[34m
+MAGENTA	=	\033[35m
+CYAN	=	\033[36m
+PINK	=	\033[38;5;206m
+
+# ***************************************** #
+#					Rules					#
+# ***************************************** #
+
+.PHONY: all clean fclean re echo
+
+all:		$(NAME)
+
+$(NAME):	echo $(OBJS)
+			@$(CC) $(FLAGS) $(NCURSE) -o $(NAME) $(OBJS)
+			@echo "\n$(GREEN)$(NAME) is ready !$(NONE)"
+
+echo:
+			@echo "$(YELLOW)Start of Compilation...$(NONE)"
+			@echo "$(PINK)---------------------------$(CYAN)"
+			@echo -n In progress
+
+$(PATH_OBJS)/%.o: $(PATH_SRCS)/%.cpp $(DEPS)
+			@mkdir $(dir $@) 2> /dev/null || true
+			@$(CC) $(FLAGS) $(FLAGS_INCS) -c $< -o $@
+			@echo -n .
 
 clean:
-	$(RM) $(OBJ)
-	
-fclean: clean
-	$(RM) $(NAME)
+			@echo "$(YELLOW)Start of Cleaning...$(NONE)"
+			@echo "$(PINK)---------------------------$(NONE)"
+			@echo "$(CYAN)Deleting all objects files...$(NONE)"
+			@/bin/rm -f $(OBJS)
+			@/bin/rm -rf $(PATH_OBJS) 2> /dev/null || true
+			@echo "$(GREEN)Objects files have been deleted !\n$(NONE)"
 
-re: fclean all
+fclean:		clean
+			@echo "$(CYAN)Deleting all binary files...$(NONE)"
+			@/bin/rm -f $(NAME)
+			@echo "$(GREEN)Binary files have been deleted !\n$(NONE)"
+
+re:			fclean all

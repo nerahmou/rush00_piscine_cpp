@@ -8,14 +8,17 @@ bool usage(void)
 
 int main(int argc, const char *argv[])
 {
+	Windows	win;
+
 	(void)argv;
 	if (argc != 2)
 		return (usage());
-	initscr();
-	move(LINES - 1, COLS - 1);
-	addch('.');
-	//refresh();
-	getch();
+	win.printBorder();
+	win.setCursor(20, 20);
+	win.updateEvent();
+	if (win.buttonsPressed(BUTTON_UP))
+		
+	// getch();
 	endwin();
 	return 0;
 }

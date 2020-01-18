@@ -2,6 +2,6 @@
 # define FT_RETRO_H
 
 #include <iostream>
-#include <ncurses.h>
+#include "./window/Window.hpp"
 
 #endif
