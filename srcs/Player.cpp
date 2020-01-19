@@ -11,6 +11,10 @@ Player::Player(std::string name):
 Player::~Player(void)
 {}
 
+std::string Player::getName(void) const {
+	return (this->_name);
+}
+
 void Player::shot(Enemy ** enemies, Missile** missile)
 {
 	Enemy* ennemy = *enemies;

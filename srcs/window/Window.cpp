@@ -2,7 +2,7 @@
 #include "window/Window.hpp"
 #include <fstream>
 
-Windows::Windows(void) {
+Windows::Windows(void) : loop(true) {
 	initscr();
 	noecho();
 	cbreak();
@@ -76,9 +76,7 @@ void			Windows::printGameEntity(GameEntity const & toPrint) {
 
 void			Windows::printEnemies(Enemy * enemies) {
 	Enemy *		list = enemies;
-	std::ofstream o("log");
 	while (list) {
-		o << "enemies x: " << list->getPosY() << std::endl;
 		this->printGameEntity(*list);
 		list = list->next;
 	}
@@ -126,6 +124,9 @@ bool		Windows::pressedKey(int& ch, Player & player,
 				return (true);
 			case ' ':
 				player.shot(enemies, missile);
+				return (true);
+			case 'q':
+				this->loop = false;
 				return (true);
 			case ERR:
 				return (false);

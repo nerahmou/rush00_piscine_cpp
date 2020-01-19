@@ -25,6 +25,7 @@ private:
 	Windows(Windows const & src);
 
 public:
+	bool	loop;
 	// bool	frameEndFlag;
 	// size_t	frameCount;
 

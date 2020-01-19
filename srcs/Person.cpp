@@ -22,8 +22,12 @@ unsigned Person::getXp(void) const
 	return this->_xp;
 }
 
-bool Person::setLife(unsigned life)
+bool Person::setLife(int life)
 {
+	if (life <= 0) {
+		this->_life = 0;
+		return (true);
+	}
 	this->_life = life;
 	return 0;
 }

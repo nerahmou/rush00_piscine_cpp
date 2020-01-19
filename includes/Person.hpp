@@ -11,7 +11,7 @@ class Person : public GameEntity
 		virtual ~Person(void);
 		unsigned getLife(void) const;
 		unsigned getXp(void) const;
-		bool setLife(unsigned);
+		bool setLife(int);
 		bool setXp(unsigned);
 		bool takeDamage(unsigned);
 	private:
