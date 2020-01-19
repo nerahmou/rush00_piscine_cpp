@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Window.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 18:31:27 by nerahmou    ###    #+. /#+    ###.fr     */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "window/Window.hpp"
 #include "Missile.hpp"
 #include <fstream>
@@ -99,6 +87,15 @@ void			Windows::printMissile(Missile** missile) {
 	wprintw(this->_win, str.c_str());
 	wattroff(this->_win, COLOR_PAIR((*missile)->getColor()));
 	wrefresh(this->_win);
+}
+	void			Windows::printEnemies(Enemy * enemies) {
+	Enemy *		list = enemies;
+	std::ofstream o("log");
+	while (list->next) {
+		o << "enemies x: " << list->getPosY() << std::endl;
+		this->printGameEntity(*list);
+		list = list->next;
+	}
 }
 
 /*

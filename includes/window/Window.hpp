@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Window.hpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 18:23:57 by nerahmou    ###    #+. /#+    ###.fr     */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef WINDOW_HPP
 # define WINDOW_HPP
 
@@ -19,8 +7,6 @@
 # include "../Player.hpp"
 # include <iostream>
 #include <cstdio>
-#include <chrono>
-#include <thread>
 # include <ncurses.h>
 
 class Windows
@@ -55,6 +41,7 @@ public:
 	void				printBorder(void);
 	void				printGameEntity(GameEntity const & toPrint);
 	void				printMissile(Missile** missile);
+	void				printEnemies(Enemy * enemies);
 
 	/*
 	**	Get Functions

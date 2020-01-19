@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 18:24:14 by nerahmou    ###    #+. /#+    ###.fr     */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_retro.hpp"
 
 bool usage(void)
@@ -41,11 +29,11 @@ int main(int argc, const char *argv[])
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);
+		win.printEnemies(enemies);
+		Enemy::moveEnemies(&enemies);
 		if (missile)
 			win.printMissile(&missile);
 		//Il faudrai iterer sur les enemies
-		win.printGameEntity(*enemies);
-		enemies->setPosX(enemies->getPosX() - 1);
 		win.pressedKey(ch, player, &enemies, missile);
 		//Ajoute ennemie random a chaque tour
 		Enemy::push(&enemies);
