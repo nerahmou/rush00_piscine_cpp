@@ -19,8 +19,6 @@
 # include "../Player.hpp"
 # include <iostream>
 #include <cstdio>
-#include <chrono>
-#include <thread>
 # include <ncurses.h>
 
 class Windows
@@ -55,6 +53,7 @@ public:
 	void				printBorder(void);
 	void				printGameEntity(GameEntity const & toPrint);
 	void				printMissile(Missile** missile);
+	void				printEnemies(Enemy * enemies);
 
 	/*
 	**	Get Functions

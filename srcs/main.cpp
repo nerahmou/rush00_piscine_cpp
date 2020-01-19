@@ -41,11 +41,11 @@ int main(int argc, const char *argv[])
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);
+		win.printEnemies(enemies);
+		Enemy::moveEnemies(enemies);
 		if (missile)
 			win.printMissile(&missile);
 		//Il faudrai iterer sur les enemies
-		win.printGameEntity(*enemies);
-		enemies->setPosX(enemies->getPosX() - 1);
 		win.pressedKey(ch, player, &enemies, missile);
 		//Ajoute ennemie random a chaque tour
 		Enemy::push(&enemies);

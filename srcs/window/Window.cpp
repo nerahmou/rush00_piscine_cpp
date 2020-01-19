@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 18:31:27 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 18:09:15 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,16 @@ void			Windows::printGameEntity(GameEntity const & toPrint) {
 	waddch(this->_win, toPrint.getChar());
 	wattroff(this->_win, COLOR_PAIR(toPrint.getColor()));
 	wrefresh(this->_win);
+}
+
+void			Windows::printEnemies(Enemy * enemies) {
+	Enemy *		list = enemies;
+	std::ofstream o("log");
+	while (list->next) {
+		o << "enemies x: " << list->getPosY() << std::endl;
+		this->printGameEntity(*list);
+		list = list->next;
+	}
 }
 
 void			Windows::printMissile(Missile** missile) {
