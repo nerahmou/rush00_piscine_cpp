@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 17:49:36 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 18:09:15 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 Windows::Windows(void) {
 	initscr();
+	noecho();
+	nodelay(stdscr, true);
 	keypad(stdscr, TRUE);
 	start_color();
 	init_pair(COLOR_DECORE, COLOR_YELLOW, COLOR_BLACK);
@@ -24,13 +26,14 @@ Windows::Windows(void) {
 	init_pair(COLOR_PLAYER, COLOR_BLUE, COLOR_WHITE);
 	init_pair(COLOR_MISSILE, COLOR_MAGENTA, COLOR_BLACK);
 	this->_win = subwin(stdscr, LINES / 2, COLS / 2, 0, 0);
-	nodelay(this->_win, true);
 	this->_height = LINES / 2;
 	this->_width = COLS / 2;
+	this->_timeSavedA = this->_timeSavedB = this->_time = std::clock() /  (CLOCKS_PER_SEC / 2);;
 }
 
 Windows::Windows(Windows const & src) {
 	initscr();
+	noecho();
 	keypad(stdscr, TRUE);
 	start_color();
 	init_pair(COLOR_DECORE, COLOR_YELLOW, COLOR_BLACK);
@@ -45,23 +48,19 @@ Windows::Windows(Windows const & src) {
 Windows::~Windows(void) {}
 
 bool			Windows::update(void) {
-	const long double sysTime = std::time(0);
-	const long double sysTimeMS = sysTime*1000;
-	if (((this->_time - sysTimeMS) > TIMEPERFRAME) && this->frameEndFlag)
-	{
-		this->frameCount++;
-		this->_time = sysTimeMS + TIMEPERFRAME;
-		this->frameEndFlag = false;
-		return (true);
-	}
-	if (this->frameEndFlag)
+	this->_time = std::clock();
+	if ((this->_time / 30000) - (this->_timeSavedA / 30000) > 0) {
+		 this->_timeSavedA = this->_time;
 		return (false);
-	this->frameEndFlag = true;
-	return (false);
+	}
+	return (true);
+}
+
+void			Windows::buttonsUpdate(void) {
+	this->_key = wgetch(this->_win);
 }
 
 void			Windows::refresh(void) {
-	clear();
 	wclear(this->_win);
 }
 
@@ -95,13 +94,13 @@ WINDOW *		Windows::getWin(void) const {
 bool		Windows::pressedKey(int& ch, Player & player,
 								Enemy ** enemies, Missile * missile) {
 	{
-		ch = wgetch(this->_win);
+		ch = getch();
 
 		switch (ch) {
-			case KEY_UP:
+			case KEY_DOWN:
 				player.setPosY(player.getPosY() + 4);
 				return (true);
-			case KEY_DOWN:
+			case KEY_UP:
 				player.setPosY(player.getPosY() - 4);
 				return (true);
 			case KEY_RIGHT:
@@ -110,7 +109,7 @@ bool		Windows::pressedKey(int& ch, Player & player,
 			case KEY_LEFT:
 				player.setPosX(player.getPosX() - 1);
 				return (true);
-			case KEY_SPACE:
+			case ' ':
 				player.shot(enemies, missile);
 				return (true);
 			case ERR:
@@ -127,6 +126,18 @@ uint			Windows::getHeight(void) const {
 uint			Windows::getWidth(void) const {
 	return (this->_width);
 }
+
+uint			Windows::getKey(void) const {
+	return (this->_key);
+}
+
+bool			Windows::pressed(uint key)
+{
+	if (key == this->_key)
+		return (true);
+	return (false);
+}
+
 /*
  **	Set Functions
  */

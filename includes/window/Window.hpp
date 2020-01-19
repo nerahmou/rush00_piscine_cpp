@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 17:30:26 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 17:43:54 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,10 @@
 # include "../Missile.hpp"
 # include "../Player.hpp"
 # include <iostream>
-# include <ctime>
+#include <cstdio>
+#include <chrono>
+#include <thread>
 # include <ncurses.h>
-
-# define TIMEPERFRAME	40
-# define BUTTON_RIGHT	68
-# define BUTTON_LEFT	67
-# define BUTTON_UP		65
-# define BUTTON_DOWN	66
-# define KEY_SPACE		32
 
 class Windows
 {
@@ -34,21 +29,26 @@ private:
 	WINDOW *	_win;
 	uint		_width;
 	uint		_height;
-	// uint		_key;
+	uint		_key;
 	int			_time;
+	int			_timeSavedA;
+	int			_timeSavedB;
 
 
 	Windows(Windows const & src);
 
 public:
-	bool	frameEndFlag;
-	size_t	frameCount;
+	// bool	frameEndFlag;
+	// size_t	frameCount;
 
 	Windows(void);
 	~Windows(void);
 
 	void				refresh(void);
+	void				buttonsUpdate(void);
 	bool				update(void);
+	bool				pressed(uint key);
+
 	/*
 	**	Print Functions
 	*/
@@ -59,6 +59,7 @@ public:
 	**	Get Functions
 	*/
 	WINDOW *			getWin(void) const;
+	uint				getKey(void) const;
 	uint				getHeight(void) const;
 	uint				getWidth(void) const;
 

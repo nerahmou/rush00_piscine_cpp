@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 17:52:32 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 18:08:12 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int main(int argc, const char *argv[])
 
 	while (ch != 'q') {
 		checkColision(player, nullptr);
-		//while (win.update());
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);
@@ -50,6 +49,7 @@ int main(int argc, const char *argv[])
 		win.pressedKey(ch, player, &enemies, missile);
 		//Ajoute ennemie random a chaque tour
 		Enemy::push(&enemies);
+		while (win.update());
 	}
 	endwin();
 	return 0;
