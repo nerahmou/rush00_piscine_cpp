@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 13:02:49 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 14:07:53 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,9 @@ Windows::Windows(Windows const & src) {
 
 Windows::~Windows(void) {}
 
-
-bool			Windows::update(void) {
-	if ((this->_time - time(NULL)) > TIMEPERFRAME && this->frameEndFlag) {
-		this->frameCount++;
-		this->_time = time(NULL) + TIMEPERFRAME;
-		this->frameEndFlag = false;
-		return (true);
-	}
-	if (this->frameEndFlag)
-		return (false);
-	this->frameEndFlag = true;
-	return (false);
-}
-
-bool			Windows::updateEvent(void) {
-	this->_key = getch();
-	printw("key = %d\n", this->_key);
-	return (true);
-}
-
-bool			Windows::buttonsPressed(uint button) {
-	if (this->_key == button)
-		return (true);
-	return (false);
+void			Windows::refresh(void) {
+	clear();
+	wclear(this->_win);
 }
 
 /*

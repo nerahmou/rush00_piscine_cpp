@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 10:38:32 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 14:08:06 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,19 @@ private:
 	WINDOW *	_win;
 	uint		_width;
 	uint		_height;
-	uint		_key;
-	int			_time;
+	// uint		_key;
+	// int			_time;
 
 	Windows(Windows const & src);
 
 public:
-	bool	frameEndFlag;
-	size_t	frameCount;
+	// bool	frameEndFlag;
+	// size_t	frameCount;
 
 	Windows(void);
 	~Windows(void);
 
-	bool				update(void);
-	bool				updateEvent(void);
-	bool				buttonsPressed(uint button);
-
+	void				refresh(void);
 	/*
 	**	Print Functions
 	*/
