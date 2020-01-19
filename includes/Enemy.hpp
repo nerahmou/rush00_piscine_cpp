@@ -4,8 +4,8 @@
 //#include "ft_retro.hpp"
 #include "Person.hpp"
 
-#define ENEMY_LIMIT_MIN_X 1
-#define ENEMY_LIMIT_MAX_X 99
+#define ENEMY_LIMIT_MIN_X 0
+#define ENEMY_LIMIT_MAX_X 100
 #define ENEMY_DEFAULT_POS_X ENEMY_LIMIT_MAX_X - 1
 
 enum ENEMY_LEVEL
@@ -24,7 +24,7 @@ class Enemy: public Person
 		virtual ~Enemy(void);
 		Enemy* prev;
 		Enemy* next;
-		static Enemy * pop(Enemy *);
+		static void pop(Enemy**, Enemy *);
 		static void push(Enemy **begin);
 		static void	moveEnemies(Enemy ** enemies);
 	private:

@@ -22,8 +22,9 @@ int main(int argc, const char *argv[])
 	Missile	*missile = NULL;
 	Enemy *enemies = NULL;
 
-
+	Enemy::push(&enemies);
 	while (ch != 'q') {
+		//Ajoute ennemie random a chaque tour
 		Enemy::push(&enemies);
 		checkColision(player, nullptr);
 		win.refresh();
@@ -31,11 +32,12 @@ int main(int argc, const char *argv[])
 		win.printGameEntity(player);
 		Enemy::moveEnemies(&enemies);
 		win.printEnemies(enemies);
-		//Il faudrai iterer sur les enemies
-		win.pressedKey(ch, player, &enemies, missile);
-		if (missile)
-			win.printMissile(&missile);
-		//Ajoute ennemie random a chaque tour
+		win.pressedKey(ch, player, &enemies, &missile);
+		if (missile) {
+			win.printMissile(missile);
+			delete missile;
+			missile = nullptr;
+		}
 		while (win.update());
 	}
 	endwin();

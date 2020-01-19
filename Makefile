@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 12:43:54 by cpieri            #+#    #+#              #
-#    Updated: 2020/01/19 19:21:54 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/19 19:53:03 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ PINK	=	\033[38;5;206m
 all:		$(NAME)
 
 $(NAME):	echo $(OBJS)
-			@$(CC) $(FLAGS) $(NCURSE) -o $(NAME) $(OBJS)
+			@$(CC) $(ERROR) $(FLAGS) $(NCURSE) -o $(NAME) $(OBJS)
 			@echo "\n$(GREEN)$(NAME) is ready !$(NONE)"
 
 echo:
@@ -108,7 +108,7 @@ echo:
 
 $(PATH_OBJS)/%.o: $(PATH_SRCS)/%.cpp $(DEPS)
 			@mkdir $(dir $@) 2> /dev/null || true
-			$(CC) $(FLAGS) $(FLAGS_INCS) -c $< -o $@
+			@$(CC) $(ERROR) $(FLAGS) $(FLAGS_INCS) -c $< -o $@
 			@echo -n .
 
 clean:

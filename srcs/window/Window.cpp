@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Window.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
+/*   Updated: 2020/01/19 21:43:35 by nerahmou    ###    #+. /#+    ###.fr     */
+/*                                                                            */
+/* ************************************************************************** */
 #include "window/Window.hpp"
 #include "Missile.hpp"
 #include <fstream>
@@ -83,32 +94,35 @@ void			Windows::printEnemies(Enemy * enemies) {
 	}
 }
 
-void			Windows::printMissile(Missile** missile) {
+void			Windows::printMissile(Missile* missile) {
 	uint	x, y = 0;
 
-	x = this->_width * (*missile)->getPosX() / 100;
+/*	x = this->_width * (*missile)->getPosX() / 100;
 	y = this->_height * (*missile)->getPosY() / 100;
 	this->setCursor(x, y);
 	wattron(this->_win, COLOR_PAIR((*missile)->getColor()));
-	//waddch(this->_win, (*missile)->getChar());
+	waddch(this->_win, (*missile)->getChar());
 	std::string str;
-	for(unsigned i = 0; i < (*missile)->getLen(); i++)
+	for(unsigned i = x; i < this->_width - 2; i++) {
 		str += (*missile)->getChar();
+	}
 	wprintw(this->_win, str.c_str());
 	wattroff(this->_win, COLOR_PAIR((*missile)->getColor()));
 	wrefresh(this->_win);
-}
-/*
-	void			Windows::printEnemies(Enemy * enemies) {
-	Enemy *		list = enemies;
-	std::ofstream o("log");
-	while (list->next) {
-		o << "enemies x: " << list->getPosY() << std::endl;
-		this->printGameEntity(*list);
-		list = list->next;
+*/	
+	x = this->_width * missile->getPosX() / 100;
+	y = this->_height * missile->getPosY() / 100;
+	this->setCursor(x, y);
+	wattron(this->_win, COLOR_PAIR(missile->getColor()));
+	waddch(this->_win, missile->getChar());
+	std::string str;
+	for(unsigned i = x; i < this->_width - 2; i++) {
+		str += missile->getChar();
 	}
+	wprintw(this->_win, str.c_str());
+	wattroff(this->_win, COLOR_PAIR(missile->getColor()));
+	wrefresh(this->_win);
 }
-*/
 /*
  **	Get Functions
  */
@@ -117,7 +131,7 @@ WINDOW *		Windows::getWin(void) const {
 }
 
 bool		Windows::pressedKey(int& ch, Player & player,
-								Enemy ** enemies, Missile * missile) {
+								Enemy ** enemies, Missile ** missile) {
 	{
 		ch = getch();
 		switch (ch) {
@@ -166,7 +180,7 @@ bool			Windows::pressed(uint key)
  **	Set Functions
  */
 void			Windows::setCursor(uint x, uint y) {
-	if (x > this->_width || y > this->_height)
+	if (x > this->_width || y >this->_height)
 		return ;
 	wmove(this->_win, y, x);
 }

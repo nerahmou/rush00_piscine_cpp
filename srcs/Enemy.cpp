@@ -33,7 +33,7 @@ Enemy::Enemy(void) : Person()
 	unsigned color;
 	unsigned life;
 	unsigned xp;
-	char		c;
+	char	c;
 
 	randomNumber = std::rand() % (NB_LEVEL);
 	life = randomNumber;
@@ -55,21 +55,23 @@ Enemy::~Enemy(void)
 {}
 
 void Enemy::moveEnemies(Enemy ** enemies) {
-	Enemy * list = *enemies;
-	while (list->next)
+	Enemy * enemy = *enemies;
+	Enemy * tmp = NULL;
+
+	while (enemy)
 	{
-		list->setPosX(list->getPosX() - 1);
-		if (list->getPosX()  == 2)
-			list = Enemy::pop(list);
-		else
-			list = list->next;
+		enemy->setPosX(enemy->getPosX() - 1);
+		tmp = enemy->next;
+		if (enemy->getPosX()  == 1)
+			Enemy::pop(enemies, enemy);
+		enemy = tmp;
 	}
 }
 
 void Enemy::push(Enemy **begin)
 {
 	Enemy *head = *begin;
-	Enemy *newEnemy = new Enemy;
+	Enemy * newEnemy = new Enemy;
 
 	newEnemy->prev = NULL;
 	newEnemy->next = NULL;
@@ -84,15 +86,16 @@ void Enemy::push(Enemy **begin)
 	}
 }
 
-Enemy * Enemy::pop(Enemy *enemy)
+void Enemy::pop(Enemy **begin, Enemy *to_del)
 {
-	Enemy* tmp;
+	Enemy* next = to_del->next;
+	Enemy* prev = to_del->prev;
 
-	tmp = enemy;
-	enemy = enemy->next;
-	enemy->prev = tmp;
-	if (tmp->prev)
-		tmp->prev->next = enemy;
-	delete tmp;
-	return enemy;
+	if (next)
+		next->prev = prev;
+	if (prev)
+		prev->next = next;
+	delete to_del;
+	if (to_del == *begin)
+		*begin = next;
 }

@@ -6,6 +6,7 @@
 # include "../Missile.hpp"
 # include "../Player.hpp"
 # include <iostream>
+# include <sstream>
 #include <cstdio>
 # include <ncurses.h>
 
@@ -40,7 +41,7 @@ public:
 	*/
 	void				printBorder(void);
 	void				printGameEntity(GameEntity const & toPrint);
-	void				printMissile(Missile** missile);
+	void				printMissile(Missile* missile);
 	void				printEnemies(Enemy * enemies);
 
 	/*
@@ -56,7 +57,7 @@ public:
 	*/
 	void				setCursor(uint x, uint y);
 
-	bool				pressedKey(int& ch, Player & player, Enemy ** enemies, Missile * missile);
+	bool				pressedKey(int& ch, Player & player, Enemy ** enemies, Missile ** missile);
 	Windows const &		operator=(Windows const & rhs);
 };
 

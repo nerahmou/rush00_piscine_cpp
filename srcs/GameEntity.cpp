@@ -11,7 +11,7 @@ GameEntity::GameEntity(unsigned posX, unsigned posY, unsigned limitMinX, unsigne
 	_cToPrint(c)
 {}
 
-GameEntity::GameEntity(void)
+GameEntity::GameEntity(void) : _posX(0), _posY(0)
 {}
 
 GameEntity::~GameEntity(void)
@@ -49,7 +49,7 @@ char GameEntity::getChar(void) const
 
 bool GameEntity::setPosX(unsigned posX)
 {
-	if (posX >= this->_limitMaxX || posX <= this->_limitMinX)
+	if (posX > this->_limitMaxX || posX < this->_limitMinX)
 		return (false);
 	this->_posX = posX;
 	return (true);
