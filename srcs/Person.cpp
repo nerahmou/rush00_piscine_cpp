@@ -35,9 +35,8 @@ bool Person::setXp(unsigned xp)
 
 bool Person::takeDamage(unsigned damage)
 {
-	if ((int)this->_life - (int)damage < 0)
-		this->_life = 0;
-	else
-			this->_life -= damage;
+	if ((int)this->_life - (int)damage <= 0)
+		return (1);
+	this->_life -= damage;
 	return 0;
 }

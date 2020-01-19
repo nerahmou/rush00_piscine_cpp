@@ -1,7 +1,7 @@
 #ifndef ENEMY_HPP
 # define ENEMY_HPP
 
-#include "ft_retro.hpp"
+//#include "ft_retro.hpp"
 #include "Person.hpp"
 
 #define ENEMY_LIMIT_MIN_X 0
@@ -21,10 +21,16 @@ class Enemy: public Person
 	public:
 		Enemy(unsigned posX, unsigned posY);
 		virtual ~Enemy(void);
+		Enemy* prev;
+		Enemy* next;
+		static Enemy * pop(Enemy *);
+		//Enemy * pop(Enemy *);
 	private:
 		Enemy(void);
 		Enemy(Enemy const &);
 		Enemy & operator=(Enemy const &);
 };
 
+
 #endif
+

@@ -10,8 +10,19 @@ Player::Player(std::string name):
 Player::~Player(void)
 {}
 
-bool Player::shot(void)
+/*
+ * Prend une liste d'énemies en parametre et renvoie la nouvelle liste d'enemies
+ * apres avoir enlevé la vie de l'enemi si touché. Si l'ennemi n'a plus de vie, on le pop de la liste
+ */
+Enemy * Player::shot(Enemy * enemies)
 {
-	//TODO
-	return 0;
+	Enemy* tmp = enemies;
+
+	while (tmp)
+	{
+		if (this->getPosX() == tmp->getPosX())
+			if (tmp->takeDamage(1))
+				tmp = Enemy::pop(tmp);
+	}
+	return tmp;
 }
