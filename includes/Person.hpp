@@ -3,7 +3,7 @@
 
 #include "GameEntity.hpp"
 
-class Person: public GameEntity
+class Person : public GameEntity
 {
 	public:
 		Person(void);

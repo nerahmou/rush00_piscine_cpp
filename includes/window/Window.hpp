@@ -6,13 +6,14 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/18 16:34:50 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/18 21:31:56 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_HPP
 # define WINDOW_HPP
 
+# include "../GameEntity.hpp"
 # include <iostream>
 # include <ncurses.h>
 
@@ -20,6 +21,7 @@
 # define BUTTON_LEFT	67
 # define BUTTON_UP		65
 # define BUTTON_DOWN	66
+# define PLAYER_PAIR	1
 
 class Windows
 {
@@ -29,9 +31,10 @@ private:
 	uint		_height;
 	uint		_key;
 
+	Windows(Windows const & src);
+
 public:
 	Windows(void);
-	Windows(Windows const & src);
 	~Windows(void);
 
 	bool				updateEvent(void);
@@ -41,6 +44,8 @@ public:
 	**	Print Functions
 	*/
 	void				printBorder(void);
+	void				printSquare(uint color);
+	void				printGameEntity(GameEntity const & toPrint);
 
 	/*
 	**	Get Functions
