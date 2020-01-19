@@ -21,7 +21,8 @@ Enemy::Enemy(unsigned posX, unsigned posY) : Person() {
 	this->setPosX(posX);
 	this->setPosY(posY);
 	this->setColor(color);
-	this->setLife(life);
+	//this->setLife(life);
+	this->setLife(1);
 	this->setXp(xp);
 	this->setChar(c);
 }

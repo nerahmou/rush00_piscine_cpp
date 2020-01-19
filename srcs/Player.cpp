@@ -14,16 +14,21 @@ Player::~Player(void)
 void Player::shot(Enemy ** enemies, Missile** missile)
 {
 	Enemy* ennemy = *enemies;
+	Enemy* tmp;
 
 	*missile = new Missile(this->getPosX() + 1, this->getPosY());
 	while (ennemy)
 	{
-		if (this->getPosX() == ennemy->getPosX())
+		tmp = ennemy->next;
+			std::cerr << ennemy->getLife() << std::endl;
+		if (this->getPosY() == ennemy->getPosY())
+		{
 			if (ennemy->takeDamage((*missile)->getDamage()))
 			{
 				this->setXp(this->getXp() + ennemy->getXp());
 				Enemy::pop(enemies, ennemy);
 			}
-		ennemy = ennemy->next;
+		}
+		ennemy = tmp;
 	}
 }

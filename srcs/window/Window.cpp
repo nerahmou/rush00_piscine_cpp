@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 21:43:35 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 22:31:11 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 #include "window/Window.hpp"
@@ -87,7 +87,7 @@ void			Windows::printGameEntity(GameEntity const & toPrint) {
 void			Windows::printEnemies(Enemy * enemies) {
 	Enemy *		list = enemies;
 	std::ofstream o("log");
-	while (list->next) {
+	while (list) {
 		o << "enemies x: " << list->getPosY() << std::endl;
 		this->printGameEntity(*list);
 		list = list->next;
