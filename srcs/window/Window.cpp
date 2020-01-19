@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 14:07:53 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 14:36:48 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,14 @@ void			Windows::printGameEntity(GameEntity const & toPrint) {
 */
 WINDOW *		Windows::getWin(void) const {
 	return (this->_win);
+}
+
+uint			Windows::getHeight(void) const {
+	return (this->_height);
+}
+
+uint			Windows::getWidth(void) const {
+	return (this->_width);
 }
 
 /*

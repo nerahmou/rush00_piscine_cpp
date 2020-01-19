@@ -49,14 +49,18 @@ char GameEntity::getChar(void) const
 
 bool GameEntity::setPosX(unsigned posX)
 {
+	if (posX >= this->_limitMaxX || posX <= this->_limitMinX)
+		return (false);
 	this->_posX = posX;
-	return 0;
+	return (true);
 }
 
 bool GameEntity::setPosY(unsigned posY)
 {
+	if (posY >= GAME_ENTITY_LIMIT_MAX_Y || posY <= GAME_ENTITY_LIMIT_MIN_Y)
+		return (false);
 	this->_posY = posY;
-	return 0;
+	return (true);
 }
 
 bool GameEntity::setSizeX(unsigned sizeX)
