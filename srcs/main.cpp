@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 18:24:14 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 19:16:53 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,15 @@ int main(int argc, const char *argv[])
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);
-		win.printEnemies(enemies);
-		Enemy::moveEnemies(enemies);
-		if (missile)
+		// win.printEnemies(enemies);
+		// Enemy::moveEnemies(enemies);
+		if (missile) {
 			win.printMissile(&missile);
+			delete missile;
+			missile = nullptr;
+		}
 		//Il faudrai iterer sur les enemies
-		win.pressedKey(ch, player, &enemies, missile);
+		win.pressedKey(ch, player, &enemies, &missile);
 		//Ajoute ennemie random a chaque tour
 		Enemy::push(&enemies);
 		while (win.update());

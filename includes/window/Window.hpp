@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 18:23:57 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 19:06:57 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../Missile.hpp"
 # include "../Player.hpp"
 # include <iostream>
+# include <sstream>
 #include <cstdio>
 # include <ncurses.h>
 
@@ -68,7 +69,7 @@ public:
 	*/
 	void				setCursor(uint x, uint y);
 
-	bool				pressedKey(int& ch, Player & player, Enemy ** enemies, Missile * missile);
+	bool				pressedKey(int& ch, Player & player, Enemy ** enemies, Missile ** missile);
 	Windows const &		operator=(Windows const & rhs);
 };
 

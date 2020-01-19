@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 18:26:41 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 19:15:29 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,11 @@ void			Windows::printMissile(Missile** missile) {
 	y = this->_height * (*missile)->getPosY() / 100;
 	this->setCursor(x, y);
 	wattron(this->_win, COLOR_PAIR((*missile)->getColor()));
-	//waddch(this->_win, (*missile)->getChar());
+	waddch(this->_win, (*missile)->getChar());
 	std::string str;
-	for(unsigned i = 0; i < (*missile)->getLen(); i++)
+	for(unsigned i = x; i < this->_width - 2; i++) {
 		str += (*missile)->getChar();
+	}
 	wprintw(this->_win, str.c_str());
 	wattroff(this->_win, COLOR_PAIR((*missile)->getColor()));
 	wrefresh(this->_win);
@@ -119,7 +120,7 @@ WINDOW *		Windows::getWin(void) const {
 }
 
 bool		Windows::pressedKey(int& ch, Player & player,
-								Enemy ** enemies, Missile * missile) {
+								Enemy ** enemies, Missile ** missile) {
 	{
 		ch = getch();
 

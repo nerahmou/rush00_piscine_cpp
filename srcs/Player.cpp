@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include <fstream>
 
 Player::Player(std::string name):
 	Person(PLAYER_DEFAULT_POS_X, PLAYER_DEFAULT_POS_Y,
@@ -14,15 +15,15 @@ Player::~Player(void)
  * Prend une liste d'énemies en parametre et renvoie la nouvelle liste d'enemies
  * apres avoir enlevé la vie de l'enemi si touché. Si l'ennemi n'a plus de vie, on le pop de la liste
  */
-void Player::shot(Enemy ** enemies, Missile* missile)
+void Player::shot(Enemy ** enemies, Missile** missile)
 {
 	Enemy* ennemy = *enemies;
 
-	missile = new Missile(this->getPosX() + 1, this->getPosY());
+	*missile = new Missile(this->getPosX() + 1, this->getPosY());
 	while (ennemy)
 	{
 		if (this->getPosX() == ennemy->getPosX())
-			if (ennemy->takeDamage(missile->getDamage()))
+			if (ennemy->takeDamage((*missile)->getDamage()))
 			{
 				this->setXp(this->getXp() + ennemy->getXp());
 				Enemy::pop(ennemy);
