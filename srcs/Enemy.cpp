@@ -54,11 +54,20 @@ Enemy::Enemy(void) : Person()
 Enemy::~Enemy(void)
 {}
 
+void Enemy::moveEnemies(Enemy * enemies) {
+	Enemy * list = enemies;
+	while (list->next)
+	{
+		list->setPosX(list->getPosX() - 1);
+		list = list->next;
+	}
+}
+
 void Enemy::push(Enemy **begin)
-{ 
+{
 	Enemy *head = *begin;
 	Enemy *newEnemy = new Enemy;
-	
+
 	newEnemy->prev = NULL;
 	newEnemy->next = NULL;
 	if (*begin == NULL)

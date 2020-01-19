@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 17:43:54 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 18:14:46 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include "../Player.hpp"
 # include <iostream>
 #include <cstdio>
-#include <chrono>
-#include <thread>
 # include <ncurses.h>
 
 class Windows
@@ -54,6 +52,7 @@ public:
 	*/
 	void				printBorder(void);
 	void				printGameEntity(GameEntity const & toPrint);
+	void				printEnemies(Enemy * enemies);
 
 	/*
 	**	Get Functions
