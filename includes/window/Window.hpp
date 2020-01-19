@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/18 21:31:56 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 13:00:52 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 # define WINDOW_HPP
 
 # include "../GameEntity.hpp"
+// # include "../Player.hpp"
 # include <iostream>
 # include <ncurses.h>
 
+# define TIMEPERFRAME	40
 # define BUTTON_RIGHT	68
 # define BUTTON_LEFT	67
 # define BUTTON_UP		65
 # define BUTTON_DOWN	66
-# define PLAYER_PAIR	1
 
 class Windows
 {
@@ -30,13 +31,18 @@ private:
 	uint		_width;
 	uint		_height;
 	uint		_key;
+	int			_time;
 
 	Windows(Windows const & src);
 
 public:
+	bool	frameEndFlag;
+	size_t	frameCount;
+
 	Windows(void);
 	~Windows(void);
 
+	bool				update(void);
 	bool				updateEvent(void);
 	bool				buttonsPressed(uint button);
 
@@ -44,7 +50,6 @@ public:
 	**	Print Functions
 	*/
 	void				printBorder(void);
-	void				printSquare(uint color);
 	void				printGameEntity(GameEntity const & toPrint);
 
 	/*

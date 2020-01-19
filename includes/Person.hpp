@@ -7,7 +7,7 @@ class Person : public GameEntity
 {
 	public:
 		Person(void);
-		Person(unsigned posX, unsigned posY, unsigned limitMinX, unsigned limitMaxX, unsigned color, unsigned life, unsigned xp);
+		Person(unsigned posX, unsigned posY, unsigned limitMinX, unsigned limitMaxX, unsigned color, unsigned life, unsigned xp, char c);
 		virtual ~Person(void);
 		unsigned getLife(void) const;
 		unsigned getXp(void) const;

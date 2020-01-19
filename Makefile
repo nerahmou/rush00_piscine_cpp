@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 12:43:54 by cpieri            #+#    #+#              #
-#    Updated: 2020/01/18 21:17:59 by cpieri           ###   ########.fr        #
+#    Updated: 2020/01/19 12:43:23 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ OBJS		=	$(addprefix $(PATH_OBJS)/,$(NAME_OBJS))
 
 INCS		=	$(addprefix $(PATH_INCS)/,$(NAME_INCS))
 
-DEPS		=	Makefile
+DEPS		=	Makefile $(INCS)
 
 # ***************************************** #
 #			Flags for compile		 		#

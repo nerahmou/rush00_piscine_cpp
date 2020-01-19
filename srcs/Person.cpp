@@ -1,7 +1,7 @@
 #include "Person.hpp"
 
-Person::Person(unsigned posX, unsigned posY, unsigned limitMinX, unsigned limitMaxX, unsigned color, unsigned life, unsigned xp):
-	GameEntity(posX, posY, limitMinX, limitMaxX, color), _limitMinX(limitMinX), _limitMaxX(limitMaxX), _life(life), _xp(xp)
+Person::Person(unsigned posX, unsigned posY, unsigned limitMinX, unsigned limitMaxX, unsigned color, unsigned life, unsigned xp, char c):
+	GameEntity(posX, posY, limitMinX, limitMaxX, color, c), _limitMinX(limitMinX), _limitMaxX(limitMaxX), _life(life), _xp(xp)
 {}
 
 

@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/18 21:26:40 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 13:05:17 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ bool usage(void)
 
 int main(int argc, const char *argv[])
 {
+	std::srand(std::time(NULL));
 	Windows	win;
 	Player	player("Louise");
+	Enemy	enemy;
+	Enemy	enemy1;
+	Enemy	enemy2;
 
 	(void)argv;
 	if (argc != 2)
@@ -29,6 +33,9 @@ int main(int argc, const char *argv[])
 	win.printBorder();
 	win.setCursor(20, 20);
 	win.printGameEntity(player);
+	win.printGameEntity(enemy);
+	win.printGameEntity(enemy1);
+	win.printGameEntity(enemy2);
 	win.updateEvent();
 	if (win.buttonsPressed(BUTTON_UP))
 		std::cout << "lol" << std::endl;

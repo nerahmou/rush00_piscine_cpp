@@ -1,13 +1,14 @@
 #include "GameEntity.hpp"
 
-GameEntity::GameEntity(unsigned posX, unsigned posY, unsigned limitMinX, unsigned limitMaxX, unsigned color):
+GameEntity::GameEntity(unsigned posX, unsigned posY, unsigned limitMinX, unsigned limitMaxX, unsigned color, char c):
 	_posX(posX),
 	_posY(posY),
 	_sizeX(GAME_ENTITY_SIZE_X),
 	_sizeY(GAME_ENTITY_SIZE_Y),
 	_limitMinX(limitMinX),
 	_limitMaxX(limitMaxX),
-	_color(color)
+	_color(color),
+	_cToPrint(c)
 {}
 
 GameEntity::GameEntity(void)
@@ -39,6 +40,11 @@ unsigned GameEntity::getSizeY(void) const
 unsigned GameEntity::getColor(void) const
 {
 	return this->_color;
+}
+
+char GameEntity::getChar(void) const
+{
+	return this->_cToPrint;
 }
 
 bool GameEntity::setPosX(unsigned posX)
@@ -80,5 +86,11 @@ bool GameEntity::setLimitMaxX(unsigned limitMaxX)
 bool GameEntity::setColor(unsigned color)
 {
 	this->_color = color;
+	return 0;
+}
+
+bool GameEntity::setChar(char c)
+{
+	this->_cToPrint = c;
 	return 0;
 }
