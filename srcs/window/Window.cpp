@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 14:57:41 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 15:11:46 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ void		Windows::pressedKey(int& ch,
 		
 		switch (ch) {
 			case KEY_UP:
-				player.setPosY(player.getPosY() + 1);
+				player.setPosY(player.getPosY() - 8);
 				break;
 			case KEY_DOWN:
-				player.setPosY(player.getPosY() - 1);
+				player.setPosY(player.getPosY() + 8);
 				break;
 			case KEY_RIGHT:
 				player.setPosX(player.getPosX() + 1);

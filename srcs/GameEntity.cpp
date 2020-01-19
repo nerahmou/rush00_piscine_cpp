@@ -57,6 +57,7 @@ bool GameEntity::setPosX(unsigned posX)
 
 bool GameEntity::setPosY(unsigned posY)
 {
+	std::cout << posY << std::endl;
 	if (posY >= GAME_ENTITY_LIMIT_MAX_Y || posY <= GAME_ENTITY_LIMIT_MIN_Y)
 		return (false);
 	this->_posY = posY;
