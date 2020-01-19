@@ -25,7 +25,7 @@ class Enemy: public Person
 		Enemy* prev;
 		Enemy* next;
 		static Enemy * pop(Enemy *);
-		//Enemy * pop(Enemy *);
+		static void push(Enemy **begin);
 	private:
 		Enemy(Enemy const &);
 		Enemy & operator=(Enemy const &);

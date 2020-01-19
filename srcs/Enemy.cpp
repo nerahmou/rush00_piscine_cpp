@@ -51,6 +51,23 @@ Enemy::Enemy(void) : Person()
 Enemy::~Enemy(void)
 {}
 
+void Enemy::push(Enemy **begin)
+{ 
+	Enemy *head = *begin;
+	Enemy *newEnemy = new Enemy;
+	
+	newEnemy->prev = NULL;
+	newEnemy->next = NULL;
+	if (*begin == NULL)
+		*begin = newEnemy;
+	else
+	{
+		while (head->next)
+			head = head->next;
+		head->next = newEnemy;
+		newEnemy->prev = head;
+	}
+}
 
 Enemy * Enemy::pop(Enemy *enemy)
 {

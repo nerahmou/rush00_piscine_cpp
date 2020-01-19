@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 14:54:24 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 16:03:48 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ bool usage(void)
 }
 
 void	checkColision(Player const & player, Enemy * enemies) {
+	(void)player;
+	(void)enemies;
+
 }
 
 int main(int argc, const char *argv[])
@@ -27,6 +30,9 @@ int main(int argc, const char *argv[])
 	Windows	win;
 	int		ch = 0;
 	Player	player("Louise");
+	Enemy *enemies = NULL;
+	Enemy::push(&enemies);
+
 
 	(void)argv;
 	if (argc != 2)
@@ -36,12 +42,9 @@ int main(int argc, const char *argv[])
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);
-		win.printGameEntity(enemy);
-		win.printGameEntity(enemy1);
-		win.printGameEntity(enemy2);
-		enemy.setPosX(enemy.getPosX() - 1);
-		enemy1.setPosX(enemy1.getPosX() - 1);
-		enemy2.setPosX(enemy2.getPosX() - 1);
+		//Il faudrai iterer sur les enemies
+		win.printGameEntity(*enemies);
+		enemies->setPosX(enemies->getPosX() - 1);
 		win.pressedKey(ch, player);
 	}
 	endwin();
