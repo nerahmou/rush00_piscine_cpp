@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 13:05:17 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 13:21:56 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ int main(int argc, const char *argv[])
 	(void)argv;
 	if (argc != 2)
 		return (usage());
-	win.printBorder();
-	win.setCursor(20, 20);
-	win.printGameEntity(player);
-	win.printGameEntity(enemy);
-	win.printGameEntity(enemy1);
-	win.printGameEntity(enemy2);
-	win.updateEvent();
-	if (win.buttonsPressed(BUTTON_UP))
-		std::cout << "lol" << std::endl;
-	endwin();
+	while (1) {
+		win.printBorder();
+		win.setCursor(20, 20);
+		win.printGameEntity(player);
+		win.printGameEntity(enemy);
+		win.printGameEntity(enemy1);
+		win.printGameEntity(enemy2);
+		win.updateEvent();
+		endwin();
+	}
 	return 0;
 }
