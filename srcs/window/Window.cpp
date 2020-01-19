@@ -1,19 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Window.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/01/19 22:31:11 by nerahmou    ###    #+. /#+    ###.fr     */
-=======
-/*   Updated: 2020/01/19 22:18:14 by cpieri           ###   ########.fr       */
->>>>>>> ec4fa080988ecf21dd5817f05a506aaa6555d635
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Missile.hpp"
 #include "window/Window.hpp"
 #include <fstream>
@@ -21,6 +5,7 @@
 Windows::Windows(void) {
 	initscr();
 	noecho();
+	cbreak();
 	nodelay(stdscr, true);
 	keypad(stdscr, TRUE);
 	start_color();
@@ -54,7 +39,7 @@ Windows::~Windows(void) {}
 
 bool			Windows::update(void) {
 	this->_time = std::clock();
-	if ((this->_time / 30000) - (this->_timeSavedA / 30000) > 0) {
+	if ((this->_time / 50000) - (this->_timeSavedA / 50000) > 0) {
 		 this->_timeSavedA = this->_time;
 		return (false);
 	}
@@ -91,13 +76,9 @@ void			Windows::printGameEntity(GameEntity const & toPrint) {
 
 void			Windows::printEnemies(Enemy * enemies) {
 	Enemy *		list = enemies;
-<<<<<<< HEAD
 	std::ofstream o("log");
 	while (list) {
 		o << "enemies x: " << list->getPosY() << std::endl;
-=======
-	while (list) {
->>>>>>> ec4fa080988ecf21dd5817f05a506aaa6555d635
 		this->printGameEntity(*list);
 		list = list->next;
 	}

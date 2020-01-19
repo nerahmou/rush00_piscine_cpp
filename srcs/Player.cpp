@@ -22,11 +22,16 @@ void Player::shot(Enemy ** enemies, Missile** missile)
 		tmp = ennemy->next;
 		if (this->getPosY() == ennemy->getPosY())
 		{
+			std::cerr << "player xp : " << this->getXp() << std::endl;
+			std::cerr << "enemy life : " << ennemy->getLife() << std::endl;
 			if (ennemy->takeDamage((*missile)->getDamage()))
 			{
 				this->setXp(this->getXp() + ennemy->getXp());
+			std::cerr << "player xp : " << this->getXp() << std::endl;
+			std::cerr << "enemy life : " << ennemy->getLife() << std::endl;
 				Enemy::pop(enemies, ennemy);
 			}
+			std::cerr << std::endl;
 		}
 		ennemy = tmp;
 	}

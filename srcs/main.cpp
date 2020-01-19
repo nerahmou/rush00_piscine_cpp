@@ -21,9 +21,16 @@ int main(int argc, const char *argv[])
 	Player	player(argv[1]);
 	Missile	*missile = NULL;
 	Enemy *enemies = NULL;
+	Enemy::push(&enemies);
+	Enemy::push(&enemies);
+	Enemy::push(&enemies);
+	Enemy::push(&enemies);
+	Enemy::push(&enemies);
+	Enemy::push(&enemies);
+	Enemy::push(&enemies);
+	Enemy::push(&enemies);
 	while (ch != 'q') {
 		//Ajoute ennemie random a chaque tour
-		// Enemy::push(&enemies);
 		checkColision(player, nullptr);
 		win.refresh();
 		win.printBorder();
@@ -39,5 +46,7 @@ int main(int argc, const char *argv[])
 		while (win.update());
 	}
 	endwin();
+	Enemy::clear(&enemies);
+	std::cout << player.getXp() << std::endl;
 	return 0;
 }

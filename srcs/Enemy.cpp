@@ -47,7 +47,7 @@ Enemy::Enemy(void) : Person()
 	this->setPosX(ENEMY_DEFAULT_POS_X);
 	this->setPosY(positionY);
 	this->setColor(color);
-	this->setLife(life);
+	this->setLife(1);
 	this->setXp(xp);
 	this->setChar(c);
 }
@@ -100,3 +100,20 @@ void Enemy::pop(Enemy **begin, Enemy *to_del)
 	if (to_del == *begin)
 		*begin = next;
 }
+
+
+void Enemy::clear(Enemy **enemies)
+{
+	Enemy *current;
+	Enemy *next;
+
+	current = *enemies;
+	while (current)
+	{
+		next = current->next;
+		delete current;
+		current = next;
+	}
+
+}
+
