@@ -50,3 +50,17 @@ Enemy::Enemy(void) : Person()
 
 Enemy::~Enemy(void)
 {}
+
+
+Enemy * Enemy::pop(Enemy *enemy)
+{
+	Enemy* tmp;
+
+	tmp = enemy;
+	enemy = enemy->next;
+	enemy->prev = tmp;
+	if (tmp->prev)
+		tmp->prev->next = enemy;
+	delete tmp;
+	return enemy;
+}

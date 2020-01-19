@@ -6,14 +6,15 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:36:34 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 12:14:28 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 13:01:27 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_HPP
 # define PLAYER_HPP
 
-# include "Person.hpp"
+//# include "Person.hpp"
+# include "Enemy.hpp"
 
 # define PLAYER_LIMIT_MIN_X 	20
 # define PLAYER_LIMIT_MAX_X 	70
@@ -30,7 +31,7 @@ class Player: public Person
 	public:
 		Player(std::string name);
 		virtual ~Player(void);
-		bool shot(void);
+		Enemy* shot(Enemy*);
 
 	private:
 		Player(void);

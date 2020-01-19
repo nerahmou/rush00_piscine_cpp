@@ -23,5 +23,4 @@ class Person : public GameEntity
 		unsigned _life;
 		unsigned _xp;
 };
-
 #endif
