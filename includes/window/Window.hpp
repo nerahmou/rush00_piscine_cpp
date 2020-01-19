@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 16:03:34 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 16:55:46 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define WINDOW_HPP
 
 # include "../GameEntity.hpp"
+# include "../Enemy.hpp"
+# include "../Missile.hpp"
 // # include "../Player.hpp"
 # include <iostream>
 # include <ctime>
@@ -64,7 +66,7 @@ public:
 	*/
 	void				setCursor(uint x, uint y);
 
-	bool				pressedKey(int& ch, GameEntity & player);
+	bool				pressedKey(int& ch, GameEntity & player, Enemy ** enemies, Missile & missile);
 	Windows const &		operator=(Windows const & rhs);
 };
 

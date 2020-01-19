@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 16:08:50 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 16:56:22 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,33 @@ bool usage(void)
 void	checkColision(Player const & player, Enemy * enemies) {
 	(void)player;
 	(void)enemies;
-
 }
+
 int main(int argc, const char *argv[])
 {
+	if (argc != 2)
+		return (usage());
 	std::srand(std::time(NULL));
-	Windows	win;
 	int		ch = 0;
-	Player	player("Louise");
+	Windows	win;
+	Player	player(argv[1]);
+	Missile	missile;
 	Enemy *enemies = NULL;
 	Enemy::push(&enemies);
 
-	(void)argv;
-	if (argc != 2)
-		return (usage());
+
 	while (ch != 'q') {
-		// checkColision(player, nullptr);
-		while (win.update());
+		checkColision(player, nullptr);
+		//while (win.update());
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);
 		//Il faudrai iterer sur les enemies
 		win.printGameEntity(*enemies);
 		enemies->setPosX(enemies->getPosX() - 1);
-		win.pressedKey(ch, player);
+		win.pressedKey(ch, player, &enemies, missile);
+		//Ajoute ennemie random a chaque tour
+		Enemy::push(&enemies);
 	}
 	endwin();
 	return 0;

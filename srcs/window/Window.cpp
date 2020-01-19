@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 16:02:31 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 16:56:03 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Windows::Windows(void) {
 	init_pair(COLOR_ENEMY_MED, COLOR_WHITE, COLOR_MAGENTA);
 	init_pair(COLOR_ENEMY_HARD, COLOR_WHITE, COLOR_RED);
 	init_pair(COLOR_PLAYER, COLOR_BLUE, COLOR_WHITE);
+	init_pair(COLOR_MISSILE, COLOR_MAGENTA, COLOR_BLACK);
 	this->_win = subwin(stdscr, LINES / 2, COLS / 2, 0, 0);
 	nodelay(this->_win, true);
 	this->_height = LINES / 2;
@@ -91,7 +92,7 @@ WINDOW *		Windows::getWin(void) const {
 	return (this->_win);
 }
 
-bool		Windows::pressedKey(int& ch, GameEntity & player) {
+bool		Windows::pressedKey(int& ch, GameEntity & player, Enemy ** enemies, Missile & missile) {
 	{
 		ch = wgetch(this->_win);
 

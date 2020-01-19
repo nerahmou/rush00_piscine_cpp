@@ -8,5 +8,6 @@
 # include "Player.hpp"
 # include "Decore.hpp"
 # include "Enemy.hpp"
+# include "Missile.hpp"
 
 #endif

@@ -13,6 +13,7 @@
 # define COLOR_ENEMY_MED			2
 # define COLOR_ENEMY_HARD			3
 # define COLOR_PLAYER				4
+# define COLOR_MISSILE				5
 
 class GameEntity
 {
