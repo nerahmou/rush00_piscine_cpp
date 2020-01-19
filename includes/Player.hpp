@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:36:34 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 19:35:28 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 22:37:39 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Player: public Person
 		Player(std::string name);
 		virtual ~Player(void);
 		void shot(Enemy**, Missile**);
+		std::string getName(void) const;
 
 	private:
 		Player(void);

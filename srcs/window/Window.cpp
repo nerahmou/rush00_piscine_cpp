@@ -6,11 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/01/19 22:31:11 by nerahmou    ###    #+. /#+    ###.fr     */
-=======
-/*   Updated: 2020/01/19 22:18:14 by cpieri           ###   ########.fr       */
->>>>>>> ec4fa080988ecf21dd5817f05a506aaa6555d635
+/*   Updated: 2020/01/19 23:10:52 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +14,7 @@
 #include "window/Window.hpp"
 #include <fstream>
 
-Windows::Windows(void) {
+Windows::Windows(void) : loop(true) {
 	initscr();
 	noecho();
 	nodelay(stdscr, true);
@@ -145,6 +141,9 @@ bool		Windows::pressedKey(int& ch, Player & player,
 				return (true);
 			case ' ':
 				player.shot(enemies, missile);
+				return (true);
+			case 'q':
+				this->loop = false;
 				return (true);
 			case ERR:
 				return (false);
