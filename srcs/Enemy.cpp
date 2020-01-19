@@ -9,18 +9,21 @@ Enemy::Enemy(unsigned posX, unsigned posY) : Person() {
 	unsigned color;
 	unsigned life;
 	unsigned xp;
+	char		c;
 
 	randomNumber = std::rand() % NB_LEVEL;
 	life = randomNumber;
 	xp = randomNumber * 5;
 	color = enemies_colors[randomNumber];
-	this->setPosX(posX);
-	this->setPosY(posY);
+	c = enemies_char[randomNumber];
 	this->setLimitMinX(ENEMY_LIMIT_MIN_X);
 	this->setLimitMaxX(ENEMY_LIMIT_MAX_X);
+	this->setPosX(posX);
+	this->setPosY(posY);
 	this->setColor(color);
 	this->setLife(life);
 	this->setXp(xp);
+	this->setChar(c);
 }
 
 Enemy::Enemy(void) : Person()
@@ -35,13 +38,13 @@ Enemy::Enemy(void) : Person()
 	randomNumber = std::rand() % NB_LEVEL;
 	life = randomNumber;
 	xp = randomNumber * 5;
-	positionY = std::rand() % GAME_ENTITY_LIMIT_MAX_Y + GAME_ENTITY_LIMIT_MIN_Y;
+	positionY = std::rand() % GAME_ENTITY_LIMIT_MAX_Y;
 	color = enemies_colors[randomNumber];
 	c = enemies_char[randomNumber];
-	this->setPosX(ENEMY_DEFAULT_POS_X);
-	this->setPosY(positionY);
 	this->setLimitMinX(ENEMY_LIMIT_MIN_X);
 	this->setLimitMaxX(ENEMY_LIMIT_MAX_X);
+	this->setPosX(ENEMY_DEFAULT_POS_X);
+	this->setPosY(positionY);
 	this->setColor(color);
 	this->setLife(life);
 	this->setXp(xp);

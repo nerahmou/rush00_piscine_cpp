@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 16:03:48 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 16:08:50 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	checkColision(Player const & player, Enemy * enemies) {
 	(void)enemies;
 
 }
-
 int main(int argc, const char *argv[])
 {
 	std::srand(std::time(NULL));
@@ -33,12 +32,12 @@ int main(int argc, const char *argv[])
 	Enemy *enemies = NULL;
 	Enemy::push(&enemies);
 
-
 	(void)argv;
 	if (argc != 2)
 		return (usage());
 	while (ch != 'q') {
-		checkColision(player, nullptr);
+		// checkColision(player, nullptr);
+		while (win.update());
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);

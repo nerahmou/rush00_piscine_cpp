@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 15:11:46 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 16:02:31 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ Windows::Windows(void) {
 	init_pair(COLOR_ENEMY_HARD, COLOR_WHITE, COLOR_RED);
 	init_pair(COLOR_PLAYER, COLOR_BLUE, COLOR_WHITE);
 	this->_win = subwin(stdscr, LINES / 2, COLS / 2, 0, 0);
+	nodelay(this->_win, true);
 	this->_height = LINES / 2;
 	this->_width = COLS / 2;
 }
 
 Windows::Windows(Windows const & src) {
 	initscr();
+	keypad(stdscr, TRUE);
 	start_color();
 	init_pair(COLOR_DECORE, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(COLOR_ENEMY_EASY, COLOR_RED, COLOR_GREEN);
@@ -36,9 +38,26 @@ Windows::Windows(Windows const & src) {
 	init_pair(COLOR_ENEMY_HARD, COLOR_RED, COLOR_RED);
 	init_pair(COLOR_PLAYER, COLOR_BLUE, COLOR_WHITE);
 	*this = src;
+	nodelay(this->_win, true);
 }
 
 Windows::~Windows(void) {}
+
+bool			Windows::update(void) {
+	const long double sysTime = std::time(0);
+	const long double sysTimeMS = sysTime*1000;
+	if (((this->_time - sysTimeMS) > TIMEPERFRAME) && this->frameEndFlag)
+	{
+		this->frameCount++;
+		this->_time = sysTimeMS + TIMEPERFRAME;
+		this->frameEndFlag = false;
+		return (true);
+	}
+	if (this->frameEndFlag)
+		return (false);
+	this->frameEndFlag = true;
+	return (false);
+}
 
 void			Windows::refresh(void) {
 	clear();
@@ -72,27 +91,28 @@ WINDOW *		Windows::getWin(void) const {
 	return (this->_win);
 }
 
-void		Windows::pressedKey(int& ch,
-								GameEntity & player) {
+bool		Windows::pressedKey(int& ch, GameEntity & player) {
 	{
-		ch = getch();
-		
+		ch = wgetch(this->_win);
+
 		switch (ch) {
 			case KEY_UP:
-				player.setPosY(player.getPosY() - 8);
-				break;
+				player.setPosY(player.getPosY() + 4);
+				return (true);
 			case KEY_DOWN:
-				player.setPosY(player.getPosY() + 8);
-				break;
+				player.setPosY(player.getPosY() - 4);
+				return (true);
 			case KEY_RIGHT:
 				player.setPosX(player.getPosX() + 1);
-				break;
+				return (true);
 			case KEY_LEFT:
 				player.setPosX(player.getPosX() - 1);
-				break;
-			break;
+				return (true);
+			case ERR:
+				return (false);
 		}
 	}
+	return (false);
 }
 
 uint			Windows::getHeight(void) const {

@@ -4,9 +4,9 @@
 //#include "ft_retro.hpp"
 #include "Person.hpp"
 
-#define ENEMY_LIMIT_MIN_X 0
+#define ENEMY_LIMIT_MIN_X 1
 #define ENEMY_LIMIT_MAX_X 99
-#define ENEMY_DEFAULT_POS_X ENEMY_LIMIT_MAX_X
+#define ENEMY_DEFAULT_POS_X ENEMY_LIMIT_MAX_X - 1
 
 enum ENEMY_LEVEL
 {
