@@ -73,6 +73,16 @@ void			Windows::printGameEntity(GameEntity const & toPrint) {
 	wrefresh(this->_win);
 }
 
+void			Windows::printEnemies(Enemy * enemies) {
+	Enemy *		list = enemies;
+	std::ofstream o("log");
+	while (list->next) {
+		o << "enemies x: " << list->getPosY() << std::endl;
+		this->printGameEntity(*list);
+		list = list->next;
+	}
+}
+
 void			Windows::printMissile(Missile** missile) {
 	uint	x, y = 0;
 
@@ -88,6 +98,7 @@ void			Windows::printMissile(Missile** missile) {
 	wattroff(this->_win, COLOR_PAIR((*missile)->getColor()));
 	wrefresh(this->_win);
 }
+/*
 	void			Windows::printEnemies(Enemy * enemies) {
 	Enemy *		list = enemies;
 	std::ofstream o("log");
@@ -97,7 +108,7 @@ void			Windows::printMissile(Missile** missile) {
 		list = list->next;
 	}
 }
-
+*/
 /*
  **	Get Functions
  */
@@ -109,7 +120,6 @@ bool		Windows::pressedKey(int& ch, Player & player,
 								Enemy ** enemies, Missile * missile) {
 	{
 		ch = getch();
-
 		switch (ch) {
 			case KEY_DOWN:
 				player.setPosY(player.getPosY() + 4);

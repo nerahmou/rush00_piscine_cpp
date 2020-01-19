@@ -21,22 +21,21 @@ int main(int argc, const char *argv[])
 	Player	player(argv[1]);
 	Missile	*missile = NULL;
 	Enemy *enemies = NULL;
-	Enemy::push(&enemies);
 
 
 	while (ch != 'q') {
+		Enemy::push(&enemies);
 		checkColision(player, nullptr);
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);
-		win.printEnemies(enemies);
 		Enemy::moveEnemies(&enemies);
-		if (missile)
-			win.printMissile(&missile);
+		win.printEnemies(enemies);
 		//Il faudrai iterer sur les enemies
 		win.pressedKey(ch, player, &enemies, missile);
+		if (missile)
+			win.printMissile(&missile);
 		//Ajoute ennemie random a chaque tour
-		Enemy::push(&enemies);
 		while (win.update());
 	}
 	endwin();

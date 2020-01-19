@@ -35,7 +35,7 @@ Enemy::Enemy(void) : Person()
 	unsigned xp;
 	char		c;
 
-	randomNumber = std::rand() % NB_LEVEL;
+	randomNumber = std::rand() % (NB_LEVEL);
 	life = randomNumber;
 	xp = randomNumber * 5;
 	positionY = std::rand() % GAME_ENTITY_LIMIT_MAX_Y;
@@ -54,12 +54,15 @@ Enemy::Enemy(void) : Person()
 Enemy::~Enemy(void)
 {}
 
-void Enemy::moveEnemies(Enemy * enemies) {
-	Enemy * list = enemies;
+void Enemy::moveEnemies(Enemy ** enemies) {
+	Enemy * list = *enemies;
 	while (list->next)
 	{
 		list->setPosX(list->getPosX() - 1);
-		list = list->next;
+		if (list->getPosX()  == 2)
+			list = Enemy::pop(list);
+		else
+			list = list->next;
 	}
 }
 
