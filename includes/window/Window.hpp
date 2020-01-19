@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 14:46:14 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 14:57:01 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ public:
 	**	Get Functions
 	*/
 	WINDOW *			getWin(void) const;
+	uint				getHeight(void) const;
+	uint				getWidth(void) const;
 
 	/*
 	**	Set Functions

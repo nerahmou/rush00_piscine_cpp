@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 14:54:33 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 14:57:41 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,14 @@ void		Windows::pressedKey(int& ch,
 			break;
 		}
 	}
+}
+
+uint			Windows::getHeight(void) const {
+	return (this->_height);
+}
+
+uint			Windows::getWidth(void) const {
+	return (this->_width);
 }
 /*
  **	Set Functions
