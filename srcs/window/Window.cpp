@@ -6,11 +6,12 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 18:09:15 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 18:31:27 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window/Window.hpp"
+#include "Missile.hpp"
 #include <fstream>
 
 Windows::Windows(void) {
@@ -81,6 +82,22 @@ void			Windows::printGameEntity(GameEntity const & toPrint) {
 	wattron(this->_win, COLOR_PAIR(toPrint.getColor()));
 	waddch(this->_win, toPrint.getChar());
 	wattroff(this->_win, COLOR_PAIR(toPrint.getColor()));
+	wrefresh(this->_win);
+}
+
+void			Windows::printMissile(Missile** missile) {
+	uint	x, y = 0;
+
+	x = this->_width * (*missile)->getPosX() / 100;
+	y = this->_height * (*missile)->getPosY() / 100;
+	this->setCursor(x, y);
+	wattron(this->_win, COLOR_PAIR((*missile)->getColor()));
+	//waddch(this->_win, (*missile)->getChar());
+	std::string str;
+	for(unsigned i = 0; i < (*missile)->getLen(); i++)
+		str += (*missile)->getChar();
+	wprintw(this->_win, str.c_str());
+	wattroff(this->_win, COLOR_PAIR((*missile)->getColor()));
 	wrefresh(this->_win);
 }
 

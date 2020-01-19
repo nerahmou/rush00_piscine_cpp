@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 17:43:54 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 18:23:57 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ public:
 	*/
 	void				printBorder(void);
 	void				printGameEntity(GameEntity const & toPrint);
+	void				printMissile(Missile** missile);
 
 	/*
 	**	Get Functions

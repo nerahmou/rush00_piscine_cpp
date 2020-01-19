@@ -11,3 +11,8 @@ unsigned Missile::getDamage(void) const
 {
 	return this->_damage;
 }
+
+unsigned Missile::getLen(void) const
+{
+	return this->_len;
+}
