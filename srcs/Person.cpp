@@ -1,4 +1,5 @@
 #include "Person.hpp"
+#include <fstream>
 
 Person::Person(unsigned posX, unsigned posY, unsigned limitMinX, unsigned limitMaxX, unsigned color, unsigned life, unsigned xp, char c):
 	GameEntity(posX, posY, limitMinX, limitMaxX, color, c), _limitMinX(limitMinX), _limitMaxX(limitMaxX), _life(life), _xp(xp)
@@ -36,7 +37,7 @@ bool Person::setXp(unsigned xp)
 bool Person::takeDamage(unsigned damage)
 {
 	if ((int)this->_life - (int)damage <= 0)
-		return (1);
+		return (true);
 	this->_life -= damage;
-	return 0;
+	return (false);
 }

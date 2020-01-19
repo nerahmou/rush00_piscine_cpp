@@ -23,7 +23,7 @@ int main(int argc, const char *argv[])
 	Enemy *enemies = NULL;
 	while (ch != 'q') {
 		//Ajoute ennemie random a chaque tour
-		Enemy::push(&enemies);
+		// Enemy::push(&enemies);
 		checkColision(player, nullptr);
 		win.refresh();
 		win.printBorder();

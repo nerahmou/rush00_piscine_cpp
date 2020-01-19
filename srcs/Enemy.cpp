@@ -63,7 +63,7 @@ void Enemy::moveEnemies(Enemy ** enemies) {
 	{
 		enemy->setPosX(enemy->getPosX() - 1);
 		tmp = enemy->next;
-		if (enemy->getPosX()  == 1)
+		if (enemy->getPosX() == 1)
 			Enemy::pop(enemies, enemy);
 		enemy = tmp;
 	}
