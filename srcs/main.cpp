@@ -18,20 +18,21 @@ bool usage(void)
 	return (1);
 }
 
+void	checkColision(Player const & player, Enemy * enemies) {
+}
+
 int main(int argc, const char *argv[])
 {
 	std::srand(std::time(NULL));
 	Windows	win;
 	int		ch = 0;
 	Player	player("Louise");
-	Enemy	enemy;
-	Enemy	enemy1;
-	Enemy	enemy2;
 
 	(void)argv;
 	if (argc != 2)
 		return (usage());
 	while (ch != 'q') {
+		checkColision(player, nullptr);
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);
