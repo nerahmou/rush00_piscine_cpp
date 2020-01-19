@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 14:54:24 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 15:49:20 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ bool usage(void)
 	return (1);
 }
 
-void	checkColision(Player const & player, Enemy * enemies) {
-}
+// void	checkColision(Player const & player, Enemy * enemies) {
+// }
 
 int main(int argc, const char *argv[])
 {
@@ -27,12 +27,16 @@ int main(int argc, const char *argv[])
 	Windows	win;
 	int		ch = 0;
 	Player	player("Louise");
+	Enemy	enemy;
+	Enemy	enemy1;
+	Enemy	enemy2;
 
 	(void)argv;
 	if (argc != 2)
 		return (usage());
 	while (ch != 'q') {
-		checkColision(player, nullptr);
+		// checkColision(player, nullptr);
+		while (win.update());
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);

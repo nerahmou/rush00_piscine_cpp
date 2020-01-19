@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 14:57:01 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 16:03:34 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../GameEntity.hpp"
 // # include "../Player.hpp"
 # include <iostream>
+# include <ctime>
 # include <ncurses.h>
 
 # define TIMEPERFRAME	40
@@ -31,18 +32,20 @@ private:
 	uint		_width;
 	uint		_height;
 	// uint		_key;
-	// int			_time;
+	int			_time;
+
 
 	Windows(Windows const & src);
 
 public:
-	// bool	frameEndFlag;
-	// size_t	frameCount;
+	bool	frameEndFlag;
+	size_t	frameCount;
 
 	Windows(void);
 	~Windows(void);
 
 	void				refresh(void);
+	bool				update(void);
 	/*
 	**	Print Functions
 	*/
@@ -61,7 +64,7 @@ public:
 	*/
 	void				setCursor(uint x, uint y);
 
-	void		pressedKey(int& chu, GameEntity & player);
+	bool				pressedKey(int& ch, GameEntity & player);
 	Windows const &		operator=(Windows const & rhs);
 };
 
