@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 14:15:02 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 14:54:24 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,7 @@ int main(int argc, const char *argv[])
 		enemy.setPosX(enemy.getPosX() - 1);
 		enemy1.setPosX(enemy1.getPosX() - 1);
 		enemy2.setPosX(enemy2.getPosX() - 1);
-		ch = getch();
-		if (ch == 'd') {
-			player.setPosX(player.getPosX() + 1);
-		}
-		if (ch == 'a') {
-			player.setPosX(player.getPosX() - 1);
-		}
-		if (ch == 's') {
-			player.setPosY(player.getPosY() + 1);
-		}
-		if (ch == 'w') {
-			player.setPosY(player.getPosY() - 1);
-		}
-		if (ch == ' ') {
-			player.setPosY(99);
-		}
+		win.pressedKey(ch, player);
 	}
 	endwin();
 	return 0;

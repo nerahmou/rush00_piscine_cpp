@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 14:07:53 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/19 14:54:33 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 Windows::Windows(void) {
 	initscr();
+	keypad(stdscr, TRUE);
 	start_color();
 	init_pair(COLOR_DECORE, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(COLOR_ENEMY_EASY, COLOR_WHITE, COLOR_GREEN);
@@ -45,8 +46,8 @@ void			Windows::refresh(void) {
 }
 
 /*
-**	Print Functions
-*/
+ **	Print Functions
+ */
 void			Windows::printBorder(void) {
 	box(this->_win, ACS_VLINE, ACS_HLINE);
 	wrefresh(this->_win);
@@ -65,15 +66,37 @@ void			Windows::printGameEntity(GameEntity const & toPrint) {
 }
 
 /*
-**	Get Functions
-*/
+ **	Get Functions
+ */
 WINDOW *		Windows::getWin(void) const {
 	return (this->_win);
 }
 
+void		Windows::pressedKey(int& ch,
+								GameEntity & player) {
+	{
+		ch = getch();
+		
+		switch (ch) {
+			case KEY_UP:
+				player.setPosY(player.getPosY() + 1);
+				break;
+			case KEY_DOWN:
+				player.setPosY(player.getPosY() - 1);
+				break;
+			case KEY_RIGHT:
+				player.setPosX(player.getPosX() + 1);
+				break;
+			case KEY_LEFT:
+				player.setPosX(player.getPosX() - 1);
+				break;
+			break;
+		}
+	}
+}
 /*
-**	Set Functions
-*/
+ **	Set Functions
+ */
 void			Windows::setCursor(uint x, uint y) {
 	if (x > this->_width || y > this->_height)
 		return ;
