@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 12:43:54 by cpieri            #+#    #+#              #
-#    Updated: 2020/01/19 09:55:33 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/19 17:35:41 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ NAME_SRCS	=	main.cpp			\
 				Decore.cpp			\
 				Player.cpp			\
 				Enemy.cpp			\
+				Missile.cpp			\
 				window/Window.cpp
 
 NAME_OBJS	=	$(NAME_SRCS:.cpp=.o)
@@ -45,6 +46,7 @@ NAME_INCS	=	ft_retro.hpp	\
 				Decore.hpp			\
 				Player.hpp			\
 				Person.hpp			\
+				Missile.hpp			\
 				window/Window.hpp
 
 NAME_DEPS	=	$(NAME_SRCS:.cpp=.d)

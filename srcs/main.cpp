@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 21:12:16 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 16:56:22 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 17:52:32 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, const char *argv[])
 	int		ch = 0;
 	Windows	win;
 	Player	player(argv[1]);
-	Missile	missile;
+	Missile	*missile = NULL;
 	Enemy *enemies = NULL;
 	Enemy::push(&enemies);
 
@@ -42,6 +42,8 @@ int main(int argc, const char *argv[])
 		win.refresh();
 		win.printBorder();
 		win.printGameEntity(player);
+		if (missile)
+			//win.print?????(&missile);
 		//Il faudrai iterer sur les enemies
 		win.printGameEntity(*enemies);
 		enemies->setPosX(enemies->getPosX() - 1);

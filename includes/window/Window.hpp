@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:09:07 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 16:55:46 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 17:30:26 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../GameEntity.hpp"
 # include "../Enemy.hpp"
 # include "../Missile.hpp"
-// # include "../Player.hpp"
+# include "../Player.hpp"
 # include <iostream>
 # include <ctime>
 # include <ncurses.h>
@@ -26,6 +26,7 @@
 # define BUTTON_LEFT	67
 # define BUTTON_UP		65
 # define BUTTON_DOWN	66
+# define KEY_SPACE		32
 
 class Windows
 {
@@ -66,7 +67,7 @@ public:
 	*/
 	void				setCursor(uint x, uint y);
 
-	bool				pressedKey(int& ch, GameEntity & player, Enemy ** enemies, Missile & missile);
+	bool				pressedKey(int& ch, Player & player, Enemy ** enemies, Missile * missile);
 	Windows const &		operator=(Windows const & rhs);
 };
 

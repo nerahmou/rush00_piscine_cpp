@@ -10,16 +10,16 @@
 class Missile : public GameEntity
 {
 	public:
-		Missile(void);
-		Missile(unsigned posX, unsigned posY, unsigned limitMinX, unsigned limitMaxX, unsigned color, unsigned life, unsigned xp, char c);
+		Missile(unsigned posX, unsigned posY);
 		virtual ~Missile(void);
 		unsigned getDamage(void)const;
+		unsigned getLen(void)const;
 	private:
+		Missile(void);
 		Missile(Missile const &);
 		Missile & operator=(Missile const &);
 		unsigned _damage;
 		unsigned _len;
-		bool _used; //si le missile a ete lancé
 };
 #
 

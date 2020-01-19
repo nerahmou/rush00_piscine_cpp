@@ -14,15 +14,19 @@ Player::~Player(void)
  * Prend une liste d'énemies en parametre et renvoie la nouvelle liste d'enemies
  * apres avoir enlevé la vie de l'enemi si touché. Si l'ennemi n'a plus de vie, on le pop de la liste
  */
-Enemy * Player::shot(Enemy * enemies)
+void Player::shot(Enemy ** enemies, Missile* missile)
 {
-	Enemy* tmp = enemies;
+	Enemy* ennemy = *enemies;
 
-	while (tmp)
+	missile = new Missile(this->getPosX() + 1, this->getPosY());
+	while (ennemy)
 	{
-		if (this->getPosX() == tmp->getPosX())
-			if (tmp->takeDamage(1))
-				tmp = Enemy::pop(tmp);
+		if (this->getPosX() == ennemy->getPosX())
+			if (ennemy->takeDamage(missile->getDamage()))
+			{
+				this->setXp(this->getXp() + ennemy->getXp());
+				Enemy::pop(ennemy);
+			}
+		ennemy = ennemy->next;
 	}
-	return tmp;
 }

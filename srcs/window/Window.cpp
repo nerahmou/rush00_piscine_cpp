@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 14:19:19 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/19 16:56:03 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 17:49:36 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ WINDOW *		Windows::getWin(void) const {
 	return (this->_win);
 }
 
-bool		Windows::pressedKey(int& ch, GameEntity & player, Enemy ** enemies, Missile & missile) {
+bool		Windows::pressedKey(int& ch, Player & player,
+								Enemy ** enemies, Missile * missile) {
 	{
 		ch = wgetch(this->_win);
 
@@ -108,6 +109,9 @@ bool		Windows::pressedKey(int& ch, GameEntity & player, Enemy ** enemies, Missil
 				return (true);
 			case KEY_LEFT:
 				player.setPosX(player.getPosX() - 1);
+				return (true);
+			case KEY_SPACE:
+				player.shot(enemies, missile);
 				return (true);
 			case ERR:
 				return (false);
